@@ -8,11 +8,15 @@ import { Observable } from 'rxjs/Rx';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public breached: any = [];
-  public inMails: String = "";
-  public inMailsParsed: any[];
+  public breached: any;
+  public inMails: String;
+  public inMailsParsed: String[];
 
-  constructor(private pwnedService: PwnedService) { }
+  constructor(private pwnedService: PwnedService) {
+    this.breached = [];
+    this.inMails = "test@example.com";
+    this.inMailsParsed = ["test@example.com"];
+  }
 
   parseTextArea() {
      this.inMailsParsed = this.inMails.split(", ");
