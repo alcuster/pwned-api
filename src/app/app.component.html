@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>HIBP Batch Search</h1>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="input-group">
+        <input [(ngModel)]="inMails" (ngModelChange)="parseTextArea()" type="text" class="form-control" placeholder="Enter a comma-separated list of email addresses..." />
+        <span class="input-group-btn">
+          <button (click)="searchHIBP()" type="button" class="btn btn-primary">Search</button>
+        </span>
+      </div>
+
+      <h4>Query preview:</h4>
+      <pre>{{inMailsParsed | json}}</pre>
+
+    </div>
+  </div>
+  <div class="row">
+    <kendo-grid [data]="breached">
+      <kendo-grid-column field="user" title="Address"></kendo-grid-column>
+      <kendo-grid-column field="breachCount" title="Breach Count" width="150"></kendo-grid-column>
+      <div *kendoGridDetailTemplate="let dataItem">
+        <account-details [account]="dataItem.data"></account-details>
+      </div>
+    </kendo-grid>
+  </div>
+</div>
